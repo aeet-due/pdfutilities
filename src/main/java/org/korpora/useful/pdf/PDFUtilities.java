@@ -26,6 +26,22 @@ import java.io.InputStream;
  */
 public final class PDFUtilities {
 
+    /**
+     * the namespace of TIFF properties in EXIV2 XMPs (as yet unused)
+     */
+    public static final String TIFF = "http://ns.adobe.com/tiff/1.0/";
+
+    /**
+     * the namespaces for crs in XMP
+     */
+    public static final String CRS = "http://ns.adobe.com/camera-raw-settings/1.0/";
+
+    /**
+     * default JPEG quality
+     */
+    public static final float JPEG_QUALITY = 0.92f;
+
+
     static final String COLOR_REGISTRY = "http://www.color.org";
     static final String SRGB_PROFILE = "sRGB IEC61966-2.1";
     static final byte[] colorProfileBytes;
