@@ -52,12 +52,12 @@ public final class PDFUtilities {
     static final byte[] colorProfileBytes;
     static final String[] CREATORS = new String[]{
             "Universität Duisburg-Essen, Arbeitsstelle für Edition und "
-                    + "Editionstechnik",
-            "Leibniz-Institut für Deutsche Sprache"};
+                    + "Editionstechnik"};
 
     static {
         try (InputStream colorProfileStream = PDFUtilities.class
                 .getResourceAsStream("/sRGB.icc")) {
+            assert colorProfileStream != null;
             colorProfileBytes = colorProfileStream.readAllBytes();
         } catch (IOException e) {
             throw new RuntimeException(e);
