@@ -40,7 +40,12 @@ public final class PDFUtilities {
      * default JPEG quality
      */
     public static final float JPEG_QUALITY = 0.92f;
+    private static final int DEFAULT_RESOLUTION = 240;
 
+    /**
+     * grid units per inch
+     */
+    static float GRID_PER_INCH = 72F;
 
     static final String COLOR_REGISTRY = "http://www.color.org";
     static final String SRGB_PROFILE = "sRGB IEC61966-2.1";
@@ -68,16 +73,11 @@ public final class PDFUtilities {
     /**
      * add XMP metadata to output document
      *
-     * @param document
-     *         the PDF document
-     * @param title
-     *         the title
-     * @param level
-     *         the PDF/A level
-     * @param subLevel
-     *         the PDF/A conformance level
-     * @throws ProcessingException
-     *         in case of problems
+     * @param document the PDF document
+     * @param title    the title
+     * @param level    the PDF/A level
+     * @param subLevel the PDF/A conformance level
+     * @throws ProcessingException in case of problems
      */
     public static void addMetaData(final PDDocument document,
                                    final String title, final int level,
@@ -117,10 +117,8 @@ public final class PDFUtilities {
     /**
      * add SRGB color space to make PDF/A checkers happy
      *
-     * @param document
-     *         the PDF document
-     * @throws IOException
-     *         if anything goes wrong
+     * @param document the PDF document
+     * @throws IOException if anything goes wrong
      */
     public static void addColorProfileSRGB(PDDocument document)
             throws IOException {
@@ -138,15 +136,11 @@ public final class PDFUtilities {
     /**
      * add a new page to the current output document
      *
-     * @param document
-     *         the document
-     * @param width
-     *         the width
-     * @param height
-     *         the height
+     * @param document the document
+     * @param width    the width
+     * @param height   the height
      * @return the content stream of the new page
-     * @throws IOException
-     *         if anything goes wrong
+     * @throws IOException if anything goes wrong
      */
     public static PDPageContentStream newPage(final PDDocument document,
                                               final float width,
@@ -160,23 +154,15 @@ public final class PDFUtilities {
     /**
      * add a new page to the current output document
      *
-     * @param document
-     *         the document
-     * @param width
-     *         the width
-     * @param height
-     *         the height
-     * @param cropUpperX
-     *         the upper right x coordinate of the cropBox
-     * @param cropUpperY
-     *         the upper right y coordinate of the cropBox
-     * @param cropLowerX
-     *         the lower left x coordinate of the cropBox
-     * @param cropLowerY
-     *         the lower left y coordinate of the cropBox
+     * @param document   the document
+     * @param width      the width
+     * @param height     the height
+     * @param cropUpperX the upper right x coordinate of the cropBox
+     * @param cropUpperY the upper right y coordinate of the cropBox
+     * @param cropLowerX the lower left x coordinate of the cropBox
+     * @param cropLowerY the lower left y coordinate of the cropBox
      * @return the content stream of the new page
-     * @throws IOException
-     *         if anything goes wrong
+     * @throws IOException if anything goes wrong
      */
     public static PDPageContentStream newPage(final PDDocument document,
                                               final float width,
@@ -195,6 +181,26 @@ public final class PDFUtilities {
         document.addPage(currentPage);
         return new PDPageContentStream(document, currentPage,
                 PDPageContentStream.AppendMode.APPEND, true, true);
+    }
+
+    public static float toGridValue(float value, float resolution) {
+        return value * GRID_PER_INCH / resolution;
+    }
+
+    public static float toGridValue(int value, int resolution) {
+        return ((float) value) * GRID_PER_INCH / ((float) resolution);
+    }
+
+    public static float toGridValue(float value) {
+        return value * GRID_PER_INCH / DEFAULT_RESOLUTION;
+    }
+
+    public static PDRectangle makeGridRectangle(int width, int height, int xResolution, int yResolution) {
+        return new PDRectangle(toGridValue(width), toGridValue(height));
+    }
+
+    public static PDRectangle makeGridRectangle(int width, int height) {
+        return makeGridRectangle(width, height, DEFAULT_RESOLUTION, DEFAULT_RESOLUTION);
     }
 
 }
