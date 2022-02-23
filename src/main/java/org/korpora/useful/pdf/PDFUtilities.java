@@ -183,22 +183,59 @@ public final class PDFUtilities {
                 PDPageContentStream.AppendMode.APPEND, true, true);
     }
 
+
+    /**
+     * calculate a value for the PDF grid, based on a resolution
+     *
+     * @param value      the value in units
+     * @param resolution the resolution
+     * @return the grid value
+     */
     public static float toGridValue(float value, float resolution) {
         return value * GRID_PER_INCH / resolution;
     }
 
+    /**
+     * calculate a value for the PDF grid, based on a resolution
+     *
+     * @param value      the value in units
+     * @param resolution the resolution
+     * @return the grid value
+     */
     public static float toGridValue(int value, int resolution) {
         return ((float) value) * GRID_PER_INCH / ((float) resolution);
     }
 
+    /**
+     * calculate a value for the PDF grid, using default resolution
+     *
+     * @param value the value in units
+     * @return the grid value
+     */
     public static float toGridValue(float value) {
         return value * GRID_PER_INCH / DEFAULT_RESOLUTION;
     }
 
+    /**
+     * make a rectangle on the grid
+     *
+     * @param width       the width in units
+     * @param height      the height in units
+     * @param xResolution the resolution of the X axis
+     * @param yResolution the resolution of the Y axis
+     * @return the rectangle
+     */
     public static PDRectangle makeGridRectangle(int width, int height, int xResolution, int yResolution) {
         return new PDRectangle(toGridValue(width), toGridValue(height));
     }
 
+    /**
+     * make a rectangle on the grid, use default resolution
+     *
+     * @param width  the width in units
+     * @param height the height in units
+     * @return the rectangle
+     */
     public static PDRectangle makeGridRectangle(int width, int height) {
         return makeGridRectangle(width, height, DEFAULT_RESOLUTION, DEFAULT_RESOLUTION);
     }
