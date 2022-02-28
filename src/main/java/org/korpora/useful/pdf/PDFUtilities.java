@@ -32,7 +32,7 @@ public final class PDFUtilities {
     public static final String TIFF = "http://ns.adobe.com/tiff/1.0/";
 
     /**
-     * the namespaces for crs in XMP
+     * the namespaces for CRS in XMP
      */
     public static final String CRS = "http://ns.adobe.com/camera-raw-settings/1.0/";
 
@@ -40,12 +40,16 @@ public final class PDFUtilities {
      * default JPEG quality
      */
     public static final float JPEG_QUALITY = 0.92f;
+
+    /**
+     * default resolution for TIFF etc.
+     */
     private static final int DEFAULT_RESOLUTION = 240;
 
     /**
-     * grid units per inch
+     * PDF grid units per inch
      */
-    static float GRID_PER_INCH = 72F;
+    static final float GRID_PER_INCH = 72F;
 
     static final String COLOR_REGISTRY = "http://www.color.org";
     static final String SRGB_PROFILE = "sRGB IEC61966-2.1";
@@ -96,6 +100,7 @@ public final class PDFUtilities {
 
             PDFAIdentificationSchema id = xmp
                     .createAndAddPFAIdentificationSchema();
+            assert (level < 0 && level < 4);
             id.setPart(level);
             id.setConformance(subLevel.toString());
 

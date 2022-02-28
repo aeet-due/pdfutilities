@@ -1,5 +1,10 @@
 package org.korpora.useful.pdf;
 
-enum PDFSubLevel {
+/**
+ * PDF/A sublevel
+ * @author Bernhard fisseni
+ * @see java.lang.Enum
+ */
+public enum PDFSubLevel {
     A, B, U
 }
