@@ -6,5 +6,19 @@ package org.korpora.useful.pdf;
  * @see java.lang.Enum
  */
 public enum PDFSubLevel {
-    A, B, U
+    /**
+     * the levels according to the PDF/A specification:
+     */
+    /**
+     * accessible
+     */
+    A,
+    /**
+     * basic
+     */
+    B,
+    /**
+     * Unicode
+     */
+    U
 }
