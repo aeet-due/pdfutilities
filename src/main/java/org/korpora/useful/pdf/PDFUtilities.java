@@ -99,7 +99,7 @@ public final class PDFUtilities {
                 dc.addCreator(creator);
 
             PDFAIdentificationSchema id = xmp
-                    .createAndAddPFAIdentificationSchema();
+                    .createAndAddPDFAIdentificationSchema();
             assert (level < 0 && level < 4);
             id.setPart(level);
             id.setConformance(subLevel.toString());
