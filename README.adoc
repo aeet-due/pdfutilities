@@ -1,0 +1,3 @@
+= PDF Utilities
+
+for use in http://aeet.korpora.org[AEET] and http://www.korpora.org[Korpora.org] programs.  Mostly convenience functions wrapping some https://pdfbox.apache.org/[Apache PDFBox] primitives.
