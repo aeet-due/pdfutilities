@@ -5,7 +5,7 @@ import java.io.Serial;
 /**
  * Exception in Processing documents
  *
- * @author bfi
+ * @author Bernhard Fisseni
  */
 public class ProcessingException extends Exception {
 
