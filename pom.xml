@@ -10,8 +10,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <apache.http.version>4.5.11</apache.http.version>
-    <box.version>3.0.3</box.version>
+    <apache.http.version>4.5.12</apache.http.version>
+    <box.version>3.0.4</box.version>
     <junit.subversion>6.1</junit.subversion>
     <junit.version>5.${junit.subversion}</junit.version>
     <junit.aux.version>1.${junit.subversion}</junit.aux.version>
